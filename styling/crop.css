@@ -1,0 +1,12 @@
+[data-testid="stMetric"]{
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+}
+[data-testid="stMetricLabel"]{
+    margin-left: 40%;
+    color: solid;
+}
+[class="st-emotion-cache-10trblm e1nzilvr1"]{
+    text-align: center;
+}
