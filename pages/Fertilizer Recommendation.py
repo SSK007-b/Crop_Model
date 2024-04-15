@@ -13,7 +13,7 @@ def load_utils():
     scalar = joblib.load("Dump_Files\Ferti.pkl")
     return model , scalar
 
-with open('styling\Home.css') as f:
+with open('Home.css') as f:
     st.markdown(f'<style>{f.read()}</style>' , unsafe_allow_html=True)
 
 url = requests.get( 

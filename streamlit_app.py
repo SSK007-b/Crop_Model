@@ -9,7 +9,7 @@ st.set_page_config(
 
 st.write("# Welcome to AiFarms")
 
-with open('styling\Home.css') as f:
+with open('Home.css') as f:
     st.markdown(f'<style>{f.read()}</style>' , unsafe_allow_html=True)
 
 def grid_fun(header , data , img):

@@ -18,7 +18,7 @@ crop_name = []
 st.markdown("# MultiCrop Recommendation")
 st.sidebar.header("MultiCrop Recommendation")
 
-with open('styling\Home.css') as f:
+with open('Home.css') as f:
     st.markdown(f'<style>{f.read()}</style>' , unsafe_allow_html=True)
 
 
