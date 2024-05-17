@@ -9,11 +9,11 @@ from sklearn.ensemble import RandomForestClassifier
 
 st.title(" Fertilizers Recommendation ")
 def load_utils():
-    model = joblib.load("Dump_Files\Fertilizer.pkl")
-    scalar = joblib.load("Dump_Files\Ferti.pkl")
+    model = joblib.load("Dump_Files\FertiModel.pkl")
+    scalar = joblib.load("Dump_Files\FertiEncode.pkl")
     return model , scalar
 
-with open('Home.css') as f:
+with open('styling\Home.css') as f:
     st.markdown(f'<style>{f.read()}</style>' , unsafe_allow_html=True)
 
 url = requests.get( 

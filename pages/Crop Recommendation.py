@@ -18,28 +18,28 @@ crop_name = []
 st.markdown("# MultiCrop Recommendation")
 st.sidebar.header("MultiCrop Recommendation")
 
-with open('Home.css') as f:
+with open('styling\Home.css') as f:
     st.markdown(f'<style>{f.read()}</style>' , unsafe_allow_html=True)
 
 
-def load_utils():
-    model = joblib.load("Dump_Files/grain.pkl")
-    scalar = joblib.load("Dump_Files/gscalar.pkl")
+def load_data1():
+    model = joblib.load("Dump_Files\VegModel.pkl")
+    scalar = joblib.load("Dump_Files\VegEncode.pkl")
     return model , scalar
 
-def load_data():
-    model1 = joblib.load("Dump_Files/medicine.pkl")
-    scalar1 = joblib.load("Dump_Files/mscalar.pkl")
+def load_data2():
+    model1 = joblib.load("Dump_Files\medModel.pkl")
+    scalar1 = joblib.load("Dump_Files\medEncode.pkl")
     return model1 , scalar1
 
-def load_data1():
-    model2 = joblib.load("Dump_Files/fruit.pkl")
-    scalar2 = joblib.load("Dump_Files/fscalar.pkl")
+def load_data3():
+    model2 = joblib.load("Dump_Files\FruitModel.pkl")
+    scalar2 = joblib.load("Dump_Files\FruitEncode.pkl")
     return model2 , scalar2
 
-def load_data2():
-    model3 = joblib.load("Dump_Files/veg.pkl")
-    scalar3 = joblib.load("Dump_Files/vscalar.pkl")
+def load_data4():
+    model3 = joblib.load("Dump_Files\grainModel.pkl")
+    scalar3 = joblib.load("Dump_Files\grainEncode.pkl")
     return model3 , scalar3
 
 url = requests.get( 
@@ -67,10 +67,10 @@ with st.container():
 
 button = st.button("Predict crop")
 if(button):
-    model , scalar = load_utils()
-    model1 , scalar1 = load_data()
-    model2 , scalar2 = load_data1()
-    model3 , scalar3 = load_data2()
+    model , scalar = load_data1()
+    model1 , scalar1 = load_data2()
+    model2 , scalar2 = load_data3()
+    model3 , scalar3 = load_data4()
 
     res1 = scalar.inverse_transform(model.predict([[n,p,k,ph,temp,hum,rain]]))
     res2 = scalar1.inverse_transform(model1.predict([[n,p,k,ph,temp,hum,rain]]))
@@ -91,7 +91,8 @@ if(button):
     st.header('The Predicted crop are ')
     with st.container():
         st.write("---")
-        col1 , col2 , col3 , col4 = st.columns(4)
+        col1 , col2 = st.columns(2)
+        col3 , col4 = st.columns(2)
         col1.metric(label="  Crop1  " , value=display)
         col2.metric(label="Crop2" , value=display1)
         col3.metric(label="Crop3" , value=display2)
